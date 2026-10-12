@@ -27,7 +27,7 @@ namespace UsersApp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Пользователь зарегистрирован");
+            MessageBox.Show("Пользователь зарегистрирован");sda
         }
     }
 }
