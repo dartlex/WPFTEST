@@ -25,9 +25,59 @@ namespace UsersApp
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Reg_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Пользователь зарегистрирован");sda
+            string login = textBoxLogin.Text.Trim();
+            string pass = passBox.Password.Trim();
+            string pass2 = passBox2.Password.Trim();
+            string email = textBoxEmail.Text.Trim().ToLower();
+
+            if (login.Length < 5)
+            {
+                textBoxLogin.ToolTip = "Это поле введено некорректно!";
+                textBoxLogin.Background = Brushes.DarkRed;
+            }
+            else
+            {
+                textBoxLogin.ToolTip = "";
+                textBoxLogin.Background = Brushes.Transparent;
+            }
+            if (pass.Length < 5)
+            {
+                passBox.ToolTip = "Это поле введено некорректно!";
+                passBox.Background = Brushes.DarkRed;
+            }
+            else
+            {
+                passBox.ToolTip = "";
+                passBox.Background = Brushes.Transparent;
+            }
+            if (string.IsNullOrEmpty(pass2))
+            {
+                passBox2.ToolTip = "Введите повторно пароль!";
+                passBox2.Background = Brushes.DarkRed;
+            }
+            else if (pass2 != pass)
+            {
+                passBox2.ToolTip = "Это поле введено некорректно!";
+                passBox2.Background = Brushes.DarkRed;
+            }
+            else
+            {
+                passBox2.ToolTip = "";
+                passBox2.Background = Brushes.Transparent;
+            }
+            if (email.Length < 5 || !email.Contains("@") || !email.Contains("."))
+            {
+                textBoxEmail.ToolTip = "Это поле введено некорректно!";
+                textBoxEmail.Background = Brushes.DarkRed;
+            }
+            else
+            {
+                textBoxEmail.ToolTip = "";
+                textBoxEmail.Background = Brushes.Transparent;
+                MessageBox.Show("Пользователь зарегистрирован!");
+            }
         }
     }
 }
