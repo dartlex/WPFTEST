@@ -18,11 +18,20 @@ namespace UsersApp
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window 
     {
+        ApplicationContext db;
         public MainWindow()
         {
             InitializeComponent();
+            db = new ApplicationContext();
+            List<User> users = db.Users.ToList();
+            string str = "";
+            foreach (User user in users)
+            {
+                str += "Login: " + user.login + " | ";
+            }
+            exampleText.Text = str;
         }
 
         private void Button_Reg_Click(object sender, RoutedEventArgs e)
@@ -77,6 +86,9 @@ namespace UsersApp
                 textBoxEmail.ToolTip = "";
                 textBoxEmail.Background = Brushes.Transparent;
                 MessageBox.Show("Пользователь зарегистрирован!");
+                User user = new User(login, pass, email);
+                db.Users.Add(user);
+                db.SaveChanges();
             }
         }
     }

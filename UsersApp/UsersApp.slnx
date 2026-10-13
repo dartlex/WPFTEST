@@ -1,3 +1,9 @@
 <Solution>
-  <Project Path="UsersApp.csproj" Id="99cf1e77-63b8-49e1-987c-a72b3f4a6f32" />
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="UsersApp.csproj" Id="99cf1e77-63b8-49e1-987c-a72b3f4a6f32">
+    <Platform Solution="*|x64" Project="x64" />
+  </Project>
 </Solution>
