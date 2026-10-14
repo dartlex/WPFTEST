@@ -25,13 +25,7 @@ namespace UsersApp
         {
             InitializeComponent();
             db = new ApplicationContext();
-            List<User> users = db.Users.ToList();
-            string str = "";
-            foreach (User user in users)
-            {
-                str += "Login: " + user.login + " | ";
-            }
-            exampleText.Text = str;
+            
         }
 
         private void Button_Reg_Click(object sender, RoutedEventArgs e)
@@ -89,7 +83,18 @@ namespace UsersApp
                 User user = new User(login, pass, email);
                 db.Users.Add(user);
                 db.SaveChanges();
+
+                AuthWindow authWindow = new AuthWindow();
+                authWindow.Show();
+                Hide();
             }
+        }
+
+        private void Button_Window_Auth_Click(object sender, RoutedEventArgs e)
+        {
+            AuthWindow authWindow = new AuthWindow();
+            authWindow.Show();
+            Hide();
         }
     }
 }
