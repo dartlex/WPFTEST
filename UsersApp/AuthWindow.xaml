@@ -7,6 +7,20 @@
                 mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="Приложение для пользователей" Height="450" Width="800">
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard TargetProperty="Width" TargetName="authBtn">
+                        <DoubleAnimation From="450" To="0"
+                                         AutoReverse="True"
+                                         RepeatBehavior="3x"
+                                         Duration="0:0:3"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </Window.Triggers>
     <Grid Background="White">
         <Border MinWidth="400" Margin="15" Background="White" VerticalAlignment="Center" Padding="30" MaxWidth="550" CornerRadius="20">
             <Border.Effect>
@@ -20,7 +34,7 @@
                 </Grid>
                 <TextBox x:Name="textBoxLogin" materialDesign:HintAssist.Hint="Введите логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                 <PasswordBox x:Name="passBox" materialDesign:HintAssist.Hint="Введите пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
-                <Button Content="Войти" Margin="0 20" Click="Button_Auth_Click"/>
+                <Button Content="Войти" x:Name="authBtn" Margin="0 20" Click="Button_Auth_Click"/>
             </StackPanel>
         </Border>
     </Grid>

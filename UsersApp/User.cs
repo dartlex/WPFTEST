@@ -36,5 +36,10 @@ namespace UsersApp
             Password = password;
             Email = email;
         }
+
+        //public override string ToString()
+        //{
+        //    return $"Пользователь: {Login} ; Email: {Email}";
+        //}
     }
 }

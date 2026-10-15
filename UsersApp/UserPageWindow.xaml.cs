@@ -22,6 +22,10 @@ namespace UsersApp
         public UserPageWindow()
         {
             InitializeComponent();
+            ApplicationContext db = new ApplicationContext();
+            List<User> users = db.Users.ToList();
+
+            listOfUsers.ItemsSource = users;
         }
     }
 }
