@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Media.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,10 +13,15 @@ namespace MisterPlugin2._0
     {
         public Result OnStartup(UIControlledApplication application)
         {
-            string name = "MisterPlugin2.0";
-            application.CreateRibbonTab(name);
-            RibbonPanel panel = application.CreateRibbonPanel(name,"Главное меню");
-            PushButtonData buttonData = new PushButtonData("MyFirstButton", "Запустить\nплагин", typeof(App).Assembly.Location, "MyFirstRevitPlugin.Command");
+            string tabName = "MisterPlugin2.0";
+            application.CreateRibbonTab(tabName);
+            RibbonPanel panel = application.CreateRibbonPanel(tabName,"Главное меню");
+            PushButtonData buttonData = new PushButtonData("MyFirstButton", "Запустить\nплагин", typeof(App).Assembly.Location, "MisterPlugin2._0.StartCommand");
+
+            string assemblyName = typeof(App).Assembly.GetName().Name;
+            string resourcePath = $"pack://application:,,,/{assemblyName};component/test.png";
+            buttonData.LargeImage = new BitmapImage(new Uri(resourcePath));
+
             panel.AddItem(buttonData);
 
             return Result.Succeeded;
@@ -27,4 +33,6 @@ namespace MisterPlugin2._0
 
         
     }
-}
+} 
+
+
