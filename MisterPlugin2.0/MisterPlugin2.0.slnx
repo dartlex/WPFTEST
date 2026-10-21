@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="../AddSharedParamWPF/AddSharedParamWPF.csproj" Id="e9da82c8-4eb0-4703-b5d4-2386dec78603" />
   <Project Path="MisterPlugin2.0.csproj" Id="e2e4e64d-5b33-441b-81c5-953266de8556" />
 </Solution>
